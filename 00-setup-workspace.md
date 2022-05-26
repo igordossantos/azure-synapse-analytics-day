@@ -10,23 +10,25 @@
 
 4. Create the following file systems in the primary storage account of the workspace: `dev`, `staging`, and `wwi`.
 
-5. Create a linked service to the first pool of the workspace. Configure it to connect with username and password and use the workspace's SQL admin account credentials. It is recommended to name the linked service `sqlpool01` to simplify importing datasets, data flows, and pipelines later.
+5. Create your first SQL Pool, under Manage > SQL Pools. Name your SQL Pool `SQLPool01`
 
-6. Create a linked service to the primary storage account. Configure it to connect with the account key. It is recommended to name the linked service `asadatalake01` to simplify importing datasets, data flows, and pipelines later.
+6. Create a linked service to the newly built SQL Pool in your Synapse Workspace. Configure it to connect with username and password and use the workspace's SQL admin account credentials. It is recommended to name the linked service `ls_sqlpool01` to simplify importing datasets, data flows, and pipelines later.
 
-7. Create a linked service to the blob storage account. Configure it to connect with the account key. It is recommended to name the linked service `asastore01` to simplify importing datasets, data flows, and pipelines later.
+7. Create a linked service to the primary storage account. Configure it to connect with the account key. It is recommended to name the linked service `ls_asadatalake01` to simplify importing datasets, data flows, and pipelines later.
 
-8. Create an Apache Spark pool named `SparkPool01`. Ensure Apache Spark version is set to 3.1.
+8. Create a linked service to the blob storage account. Configure it to connect with the account key. It is recommended to name the linked service `ls_asastore01` to simplify importing datasets, data flows, and pipelines later.
+
+9. Create an Apache Spark pool named `SparkPool01`. Ensure Apache Spark version is set to 3.1.
 
     ![Create Apache Spark pool page is open. Apache Spark version set to 3.1 is highlighted.](media/spark-version-selection.png "Spark Version Selection")
 
-9. Create another Apache Spark pool named `SparkPool02`. Ensure Apache Spark version is set to 2.4.
+10. Create another Apache Spark pool named `SparkPool02`. Ensure Apache Spark version is set to 2.4.
 
     >NOTE:
     >
     >This second Spark pool is required for Exercise 08 which runs AutoML in the Spark session. AutoML libraries are currently not supported by the Synapse Spark 3.1 runtime.
 
-10. For the remainder of this guide, the following terms will be used for various ASA-related resources (make sure you replace them with actual names and values):
+11. For the remainder of this guide, the following terms will be used for various ASA-related resources (make sure you replace them with actual names and values):
 
     | ASA resource                              | To be referred to as     |
     |-------------------------------------------|--------------------------|
@@ -43,7 +45,7 @@
     | Linked service to primary storage account | `asadatalake01`          |
     | Linked service to blob storage account    | `asastore01`             |
 
-11. Ensure the `Workspace` security principal (which has the same name as the `Workspace`) and the `MasterUser` (the one used to create the `Workspace`) are added with the `Storage Blob Data Owner` role to the `PrimaryStorage`.
+12. Ensure the `Workspace` security principal (which has the same name as the `Workspace`) and the `MasterUser` (the one used to create the `Workspace`) are added with the `Storage Blob Data Owner` role to the `PrimaryStorage`.
 
 ## Task 2 - Upload the data used in the exercises
 
